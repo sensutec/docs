@@ -163,7 +163,7 @@ We should only see one branch listed, "master".
 
 The star next to master means that it is our current, working branch.
 
-Let's now create a new branch entitled "my-feature". To do this, we'll use the "checkout" command along with the "-b" flag (for branch" to create a new branch.
+Let's now create a new branch entitled "my-feature". To do this, we'll use the "checkout" command along with the `-b` flag for "branch" to create a new branch.
 ```
 git checkout -b my-feature
 ```
