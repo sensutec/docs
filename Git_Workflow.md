@@ -171,6 +171,7 @@ git checkout -b my-feature
 When we type `git branch` again we should see our new feature branch and also see that it is the active, working branch.
 
 ![new branch](http://i.imgur.com/51YGmh3.png)
+
 (Note: The "my-feature" branch inherits the files and changes that exist when the branch was created)
 
 We can now start implementing a new feature or making any changes to the "my-feature" branch without fear of affecting the status of master. In practice, this is a good way to roll out a small version update or to implement a new application feature. We can switch between branches by using `git checkout master` or `git checkout my-feature`. Only the `-b` flag causes us to create a new branch.
