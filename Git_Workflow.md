@@ -12,7 +12,7 @@ I'll outline a typical workflow. You'll need to make sure that you have Git [ins
 
 In your browser, navigate to [this repository](https://github.com/sensutec/temp) and click "Fork". You should then select your own GitHub username. 
 
-![Git Fork](http://i.imgur.com/dmMdSPl.jpg)
+![Git Fork](http://i.imgur.com/dcGuNsk.jpg)
 
 You have now effectively made an exact copy the repository, but one that's hosted under your username. This is the copy you will make modifications to via the command line.
 
