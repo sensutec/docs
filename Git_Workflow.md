@@ -2,7 +2,7 @@
 
 Git and GitHub make it easy to track changes over time, implement features without sacrificing the integrity of the source, and have a well-established version control system with rollback capabilities.
 
-[Git](https://en.wikipedia.org/wiki/Git_(software) refers to a popular source code management system. GitHub provides a GUI for reviewing the code managed by Git. We call this codebase a "repository".
+[Git](https://en.wikipedia.org/wiki/Git_software) refers to a popular source code management system. GitHub provides a GUI for reviewing the code managed by Git. We call this codebase a "repository".
 
 I'll outline a typical workflow. You'll need to make sure that you have Git [installed](https://git-scm.com/download) on your machine. You also need to have created a GitHub account. Finally, this outline also assumes basic working knowledge of the command line.
 
