@@ -26,9 +26,10 @@ sudo nano post-receive
 Enter the following code to run *after* push has completed
 ```
 #!/bin/sh
+
 # --work-tree is the location of the repo
 # --git-dir is the location of the .git file we just created
-sudo git --work-tree=/var/www/example --git-dir=/home/ubuntu/example.git checkout -f
+sudo git --work-tree=/var/www/example-com --git-dir=/home/username/example-com.git checkout -f
 sudo service nginx restart
 ```
 
@@ -39,22 +40,13 @@ Make sure you have execute privelages on the `post-receive` file you just create
 
 Copy public key to your instace
 ```
-cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/your_pemfile.pem ubuntu@your.ip.address "cat>> .ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/your_pemfile.pem username@your.ip.address "cat>> .ssh/authorized_keys"
 ```
 
 Add "live" remote to your repo. Make sure you add the path to your example.git that we created in the Ubuntu server.
 ```
-cd example
-git remote add live ssh://username@your.ip.address/home/ubuntu/example.git
+cd example-com
+git remote add live ssh://username@your.ip.address/home/username/example-com.git
 ```
 
 You should now be able to push to the `live` remote, effectively updating the files in your Ubuntu server.
-
-
-```
-#!/bin/bash
-
-clear
-
-ssh -i "/Users/himmel/scripts/stec.pem" himmel@ec2-52-53-237-87.us-west-1.compute.amazonaws.com
-```
