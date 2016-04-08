@@ -9,8 +9,8 @@
 /etc/nginx/sites-available
 /etc/nginx/sites-enabled
 
-# Directory to Serve Files
-/var/www/example.com
+# Path to Repo
+/var/www/example-com
 ```
 
 ## Install Nginx
@@ -25,7 +25,7 @@ sudo apt-get install nginx
 
 Set up directory to serve files
 ```
-cd /var/www/example.com
+cd /var/www/example-com
 ```
 
 ## Configure the Nginx Block
@@ -33,7 +33,12 @@ cd /var/www/example.com
 First, copy the default configuration.
 ```
 cd /etc/nginx/sites-available
-cp default example.com
+cp default example-com
+```
+
+Remove the **symbolic link** to the default server block so that it doesn't interfere with our custom server block.
+```
+sudo rm /etc/nginx/sites-enabled/default
 ```
 
 Configure the block with `sudo nano example.com`
@@ -43,12 +48,12 @@ server {
     listen [::]:80 default_server ipv6only=on;
 
     # Set Serve Directory
-    root /var/www/example.com;
+    root /var/www/example-com;
     
     # Set Entry Point
     index index.html index.htm;
 
-    server_name localhost;
+    server_name example.com;
 
     location / {
         try_files $uri $uri/ =404;
@@ -56,26 +61,18 @@ server {
 }
 ```
 
-## Remove `default` Server Block
-
-Remove the **symbolic link** to the default server block so that it doesn't interfere with our custom server block.
-
-```
-cd /etc/nginx/sites-enabled/
-rm default
-```
-
-Keep the original default server block in `../sites-available`.
+**Important**
+You'll an to set your `server_name example.com` if you have domain you'd like to use, if you want to use a "dummy" domain, you can set it equal `localhost`. We'll configure our `hosts` file in a later step.
 
 ## Enable Server Block (copy to sites-enabled)
+
+**Important**
+You must use the *full, absolute path* for the symbolic link. The link will not work properly if you use a relative path.
 
 Create a symbolic link into `sites-enabled` folder. 
 ```
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 ```
-
-**Important**
-You must use the *full, absolute path* for the sym link. The link will not work properly if you use a relative path.
 
 Note: The command `ln` creates a link and the `-s` makes the link symbolic. A symbolic link points to another file by filename and works even if the file doesn't exist. A "hard" link, which is the default behavior, points to the data stored on the disk. Hard linking is prevented on many operating system in fear of disrupting the file system.
 
@@ -101,22 +98,23 @@ sudo service nginx restart
 
 ---
 
-## Configure Local Computer to Intercept DNS Requests
+## Configure Local Computer to Intercept DNS Requests (Optional)
 *Useful for accessing domains not configured through DNS (e.g., local.example.com)*
 
 Log out of the virtual server
 ```
-# Enter this command until you are back on your local machine
 exit
+# enter until on local machine
 ```
 
-On your host machine, open your host file
+On your local machine, open your hosts file
 ```
 sudo nano /etc/hosts
 ```
 
 Add your public IP and dummy domain
 ```
+# 
 10.x.x.x    local.example.com
 ```
 
