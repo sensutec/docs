@@ -103,8 +103,8 @@ sudo service nginx restart
 
 Log out of the virtual server
 ```
-exit
 # enter until on local machine
+exit
 ```
 
 On your local machine, open your hosts file
@@ -114,7 +114,6 @@ sudo nano /etc/hosts
 
 Add your public IP and dummy domain
 ```
-# 
 10.x.x.x    local.example.com
 ```
 
