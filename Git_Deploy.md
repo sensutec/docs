@@ -1,4 +1,4 @@
-# Serving Git Repo Live from Ubuntu Server (with Nginx)
+# Setting Up Git Deploy to Push Live
 
 ## From Ubuntu Server
 
